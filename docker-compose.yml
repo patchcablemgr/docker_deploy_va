@@ -1,0 +1,56 @@
+version: "3.7"
+services:
+  app:
+    build:
+      context: ./app
+    container_name: app
+    networks:
+      - app_network
+    volumes:
+      - ./app/app:/app
+    environment:
+      - APACHE_SERVER_NAME=patchcablemgr.com
+      - PHP_ERROR_REPORTING=E_ALL
+      - PHP_DISPLAY_ERRORS=On
+      - PHP_HTML_ERRORS=On
+      - PHP_XDEBUG_ENABLED=true
+
+  database:
+    image: mysql
+    container_name: database
+    networks:
+      - app_network
+    volumes:
+      - ./database/storage:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      - MYSQL_DATABASE=pcm
+      - MYSQL_USER=pcmuser
+      - MYSQL_PASSWORD=ChangeMe7492#&!
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+
+  adminer:
+    image: adminer
+    container_name: adminer
+    networks:
+      - app_network
+    restart: always
+    ports:
+      - 8080:8080
+
+  nginx:
+    build:
+      context: ./nginx
+    container_name: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - app_network
+    volumes:
+      - ./nginx/config:/etc/nginx
+      - ./nginx/cert:/etc/ssl/certs
+      - ./nginx/key:/etc/ssl/private
+networks:
+  app_network:
