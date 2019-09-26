@@ -1,6 +1,6 @@
 # Database
-#database/storage/*
-#!database/storage/.keep
+database/storage/*
+!database/storage/.keep
 
 # App
 app/app/public/*
