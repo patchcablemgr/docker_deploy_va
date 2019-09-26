@@ -80,12 +80,12 @@ echo "Clearing any old processes..."
 rm -f /run/apache2/apache2.pid
 rm -f /run/apache2/httpd.pid
 
-chown -R apache:apache /app && chmod -R 755 /app
-
 rm -Rf /app/public/*
 rm -Rf /app/public/.*
-git -C /app/public clone https://github.com/patchcablemgr/latest.git ./
+git -C /app/public clone https://github.com/patchcablemgr/0_1.git ./
 composer install -d /app/public/includes
+
+chown -R apache:apache /app && chmod -R 755 /app
 
 echo "Starting apache..."
 httpd -D FOREGROUND
