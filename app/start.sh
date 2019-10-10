@@ -82,7 +82,7 @@ rm -f /run/apache2/httpd.pid
 
 rm -Rf /app/public/*
 rm -Rf /app/public/.*
-git -C /app/public clone https://github.com/patchcablemgr/0_1_1.git ./
+git -C /app/public clone https://github.com/patchcablemgr/latest.git ./
 composer install -d /app/public/includes
 
 chown -R apache:apache /app && chmod -R 755 /app
