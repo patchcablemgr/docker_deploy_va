@@ -7,3 +7,6 @@ app/app/database_info.php
 app/app/public/*
 app/app/public/.*
 !app/app/public/.keep
+app/app/images/templateImages/*
+app/app/images/floorplanImages/*
+!app/app/images/floorplanImages/floorplan-default.png
