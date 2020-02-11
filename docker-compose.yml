@@ -9,7 +9,7 @@ services:
     volumes:
       - ./app/app:/app
     environment:
-      - APACHE_SERVER_NAME=patchcablemgr.com
+      - APACHE_SERVER_NAME=test.patchcablemgr.com
 
   database:
     image: mysql
@@ -48,5 +48,7 @@ services:
       - ./nginx/config:/etc/nginx
       - ./nginx/cert:/etc/ssl/certs
       - ./nginx/key:/etc/ssl/private
+    environment:
+      - SUBJECT_ALTERNATE_NAME=test.patchcablemgr.com
 networks:
   app_network:
