@@ -49,6 +49,7 @@ services:
       - ./nginx/cert:/etc/ssl/certs
       - ./nginx/key:/etc/ssl/private
     environment:
-      - SUBJECT_ALTERNATE_NAME=patchcablemgr.com
+      - SUBJECT_ALTERNATE_NAME=pcm.lcl
+      - SUBJECT_ALTERNATE_IP=10.0.0.100
 networks:
   app_network:
