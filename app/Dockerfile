@@ -44,7 +44,6 @@ RUN apk add \
 	php7-session \
 	php7-redis \
 	php7-exif \
-	php7-intl \
 	php7-fileinfo \
 	php7-ldap \
 	php7-apcu
