@@ -10,6 +10,7 @@ services:
       - ./app/app:/app
     environment:
       - APACHE_SERVER_NAME=patchcablemgr.com
+    restart: on-failure
 
   database:
     image: mysql
@@ -25,6 +26,7 @@ services:
       - MYSQL_USER=pcmuser
       - MYSQL_PASSWORD=ChangeMe7492#&!
       - MYSQL_RANDOM_ROOT_PASSWORD=yes
+    restart: on-failure
 
   adminer:
     image: adminer
@@ -34,6 +36,7 @@ services:
     restart: always
     ports:
       - 8080:8080
+    restart: on-failure
 
   nginx:
     build:
@@ -51,5 +54,6 @@ services:
     environment:
       - SUBJECT_ALTERNATE_NAME=pcm.lcl
       - SUBJECT_ALTERNATE_IP=10.0.0.100
+    restart: on-failure
 networks:
   app_network:
