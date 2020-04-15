@@ -10,6 +10,7 @@ services:
       - ./app/app:/app
     environment:
       - APACHE_SERVER_NAME=patchcablemgr.com
+      - MYSQL_PASSWORD
     restart: on-failure
 
   database:
@@ -24,7 +25,7 @@ services:
     environment:
       - MYSQL_DATABASE=pcm
       - MYSQL_USER=pcmuser
-      - MYSQL_PASSWORD=ChangeMe7492#&!
+      - MYSQL_PASSWORD
       - MYSQL_RANDOM_ROOT_PASSWORD=yes
     restart: on-failure
 
